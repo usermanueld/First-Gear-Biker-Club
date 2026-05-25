@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>First Gear Riders</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#070707;
+      color:white;
+      font-family:'Rajdhani',sans-serif;
+      overflow-x:hidden;
+    }
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:999;
+      background:rgba(0,0,0,0.75);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-container{
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+    }
+
+    .logo{
+      font-family:'Orbitron',sans-serif;
+      font-size:2rem;
+      font-weight:900;
+      color:#e10600;
+      letter-spacing:3px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      color:white;
+      text-decoration:none;
+      font-size:1.1rem;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:#e10600;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#e10600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
+
+      display:flex;
+      align-items:center;
+      padding:0 8%;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:750px;
+    }
+
+    .hero h1{
+      font-family:'Orbitron',sans-serif;
+      font-size:6rem;
+      line-height:1;
+      text-transform:uppercase;
+      margin-bottom:25px;
+      letter-spacing:4px;
+    }
+
+    .hero h1 span{
+      color:#e10600;
+    }
+
+    .hero p{
+      font-size:1.4rem;
+      line-height:1.7;
+      color:#d0d0d0;
+      margin-bottom:40px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:18px 40px;
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      font-size:1rem;
+      font-weight:700;
+      transition:0.3s;
+      letter-spacing:1px;
+    }
+
+    .btn-primary{
+      background:#e10600;
+      color:white;
+      box-shadow:0 0 20px rgba(225,6,0,0.5);
+    }
+
+    .btn-primary:hover{
+      background:#ff1f19;
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:2px solid white;
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:white;
+      color:black;
+    }
+
+    .track-line{
+      width:100%;
+      height:8px;
+      background:
+      repeating-linear-gradient(
+        to right,
+        #ffffff 0px,
+        #ffffff 30px,
+        transparent 30px,
+        transparent 60px
+      );
+      opacity:0.4;
+    }
+
+    section{
+      padding:120px 8%;
+    }
+
+    .section-title{
+      font-size:4rem;
+      font-family:'Orbitron',sans-serif;
+      margin-bottom:20px;
+      text-transform:uppercase;
+    }
+
+    .section-title span{
+      color:#e10600;
+    }
+
+    .section-text{
+      color:#b9b9b9;
+      font-size:1.2rem;
+      max-width:800px;
+      margin-bottom:60px;
+      line-height:1.7;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#111;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:40px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:4px;
+      background:#e10600;
+      transform:scaleX(0);
+      transition:0.4s;
+      transform-origin:left;
+    }
+
+    .card:hover::before{
+      transform:scaleX(1);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      background:#161616;
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h3{
+      font-size:2rem;
+      margin-bottom:20px;
+      color:white;
+    }
+
+    .card p{
+      color:#b9b9b9;
+      line-height:1.7;
+      font-size:1.1rem;
+    }
+
+    .stats{
+      background:
+      linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)),
+      url('https://images.unsplash.com/photo-1517846693594-1567da72af75?q=80&w=2070&auto=format&fit=crop') center/cover fixed;
+
+      text-align:center;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:40px;
+      margin-top:60px;
+    }
+
+    .stat-box h2{
+      font-size:5rem;
+      color:#e10600;
+      font-family:'Orbitron',sans-serif;
+    }
+
+    .stat-box p{
+      font-size:1.3rem;
+      color:#ddd;
+      letter-spacing:2px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      transition:0.5s;
+      filter:grayscale(20%);
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+      filter:grayscale(0%);
+    }
+
+    .events{
+      background:
+      linear-gradient(rgba(255, 255, 255, 0.25),rgba(0, 0, 0, 0.85)),
+      url('https://images.unsplash.com/photo-1517846693594-1567da72af75?q=80&w=2070&auto=format&fit=crop') center/cover fixed;
+    }
+
+    .cta{
+      text-align:center;
+      background:#0d0d0d;
+    }
+
+    .cta h2{
+      font-size:4rem;
+      margin-bottom:25px;
+      font-family:'Orbitron',sans-serif;
+    }
+
+    .cta p{
+      max-width:800px;
+      margin:auto;
+      color:#bdbdbd;
+      font-size:1.2rem;
+      line-height:1.7;
+      margin-bottom:40px;
+    }
+
+    footer{
+      background:black;
+      padding:40px 8%;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-content{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    footer p{
+      color:#888;
+    }
+
+    .socials{
+      display:flex;
+      gap:20px;
+    }
+
+    .socials a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .socials a:hover{
+      color:#e10600;
+    }
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:4rem;
+      }
+
+      .section-title{
+        font-size:2.8rem;
+      }
+
+      .cta h2{
+        font-size:2.8rem;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Fernlicht</div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#community">Community</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        First Gear<br>
+        <span>Riders Club</span>
+      </h1>
+
+      <p>
+        Erlebe spannende Abenteuer und Events mit unserer Crew. bestimmt sind ein paar von uns gerde auch auf achse oder hätten lust eine Tour zu fahren. Komm einfach auf unseren discord und frag nach!
+      </p>
+
+      <div class="hero-buttons">
+        <a href="https://discord.gg/Sap9tQDWxs" class="btn btn-primary">Jetzt Mitglied werden</a>
+        <a href="#" class="btn btn-secondary">Rennstrecken ansehen</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="track-line"></div>
+
+  <section id="about">
+
+    <h2 class="section-title">
+      Built for <span>Connection</span>
+    </h2>
+
+    <p class="section-text">
+      Du bist Fahranfänger oder machst gerade erst deinen Führerschein, dann bist du hier genau richtig. Wir sind der neue Motoradnachwuchs und du kannst ein teil von uns werden. Bei uns kannst du freunde in deiner nähe und auf deinem Fahrlevel kennenlernen.
+    <div class="cards">
+
+      <div class="card">
+        <h3>Trackdays</h3>
+        <p>
+          Erlebe intensive Rennstrecken-Events mit professioneller Organisation,
+          High-Speed Sessions und echtem Motorsport-Feeling.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Performance</h3>
+        <p>
+          Tuning, Technik und maximale Kontrolle —
+          entwickelt für Fahrer, die ihre Grenzen verschieben wollen.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Community</h3>
+        <p>
+          Werde Teil einer starken Motorrad-Community mit Leidenschaft für Geschwindigkeit,
+          Präzision und Racing Lifestyle.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="stats">
+
+    <h2 class="section-title">
+      The <span>Numbers</span>
+    </h2>
+
+    <div class="stats-grid">
+
+      <div class="stat-box">
+        <p>We are</p>
+        <h2>1+</h2>
+        <p>Riders</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>0</h2>
+        <p>Events</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>100%</h2>
+        <p>Fun</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>∞</h2>
+        <p>Leidenschaft</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="gallery">
+
+    <h2 class="section-title">
+      Tour <span>Gallery</span>
+    </h2>
+
+    <p class="section-text">
+      Emotionen, Geschwindigkeit und pure Rennstrecken-Atmosphäre —
+      direkt inspiriert vom Nürburgring.
+    </p>
+
+    <div class="gallery">
+
+      <img src="https://images.unsplash.com/photo-1515777315835-281b94c9589f?q=80&w=1974&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1974&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?q=80&w=2070&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <section id="events" class="events">
+    <h1 class="section-title">Events</h1>
+    <h1>Hier findest du kommende Aktionen und Veranstaltungen</h1>
+
+
+
+
+
+  </section>
+
+  <section id="community">
+    <h2 class="section-title">Unsere Community</h2>
+    <h2 class="section-text">Wir sind Fahrschüler und Fahranfänger mit dem Altersschwerpunkt 16-20</h2>
+  </section>
+  
+  <section class="cta">
+
+    <h2>
+      Ready For The Next Lap?
+    </h2>
+
+    <p>
+      Schalte in den Race Mode und werde Teil der nächsten Generation
+      von Motorradfahrern auf Deutschlands straßen
+    </p>
+
+    <a href="#" class="btn btn-primary">
+      Jetzt starten
+    </a>
+
+  </section>
+
+  <footer>
+
+    <div class="footer-content">
+
+      <p>
+        © 2026 First Gear Riders — All Rights Reserved
+      </p>
+
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">TikTok</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
