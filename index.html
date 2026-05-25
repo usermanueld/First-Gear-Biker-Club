@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RACELINE Nürburgring Riders</title>
+  <title>First Gear Riders</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
 
@@ -21,10 +21,6 @@
       font-family:'Rajdhani',sans-serif;
       overflow-x:hidden;
     }
-
-    /* =========================
-       NAVBAR
-    ==========================*/
 
     nav{
       position:fixed;
@@ -84,10 +80,6 @@
     .nav-links a:hover::after{
       width:100%;
     }
-
-    /* =========================
-       HERO
-    ==========================*/
 
     .hero{
       height:100vh;
@@ -163,10 +155,6 @@
       color:black;
     }
 
-    /* =========================
-       TRACK LINE
-    ==========================*/
-
     .track-line{
       width:100%;
       height:8px;
@@ -180,10 +168,6 @@
       );
       opacity:0.4;
     }
-
-    /* =========================
-       SECTION
-    ==========================*/
 
     section{
       padding:120px 8%;
@@ -207,10 +191,6 @@
       margin-bottom:60px;
       line-height:1.7;
     }
-
-    /* =========================
-       CARDS
-    ==========================*/
 
     .cards{
       display:grid;
@@ -262,10 +242,6 @@
       font-size:1.1rem;
     }
 
-    /* =========================
-       STATS
-    ==========================*/
-
     .stats{
       background:
       linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)),
@@ -293,10 +269,6 @@
       letter-spacing:2px;
     }
 
-    /* =========================
-       GALLERY
-    ==========================*/
-
     .gallery{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -316,9 +288,11 @@
       filter:grayscale(0%);
     }
 
-    /* =========================
-       CTA
-    ==========================*/
+    .events{
+      background:
+      linear-gradient(rgba(255, 255, 255, 0.25),rgba(0, 0, 0, 0.85)),
+      url('https://images.unsplash.com/photo-1517846693594-1567da72af75?q=80&w=2070&auto=format&fit=crop') center/cover fixed;
+    }
 
     .cta{
       text-align:center;
@@ -339,10 +313,6 @@
       line-height:1.7;
       margin-bottom:40px;
     }
-
-    /* =========================
-       FOOTER
-    ==========================*/
 
     footer{
       background:black;
@@ -376,10 +346,6 @@
       color:#e10600;
     }
 
-    /* =========================
-       RESPONSIVE
-    ==========================*/
-
     @media(max-width:900px){
 
       .hero h1{
@@ -404,21 +370,19 @@
 
 <body>
 
-  <!-- NAVBAR -->
   <nav>
     <div class="nav-container">
       <div class="logo">Fernlicht</div>
 
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#tracks">Tracks</a>
+        <a href="#events">Events</a>
         <a href="#community">Community</a>
         <a href="#gallery">Gallery</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
 
     <div class="hero-content">
@@ -429,9 +393,7 @@
       </h1>
 
       <p>
-        Erlebe die ultimative Rennstrecken-Atmosphäre für Motorradfahrer.
-        Pure Geschwindigkeit, Adrenalin und die legendäre Energie des Nürburgrings —
-        vereint in einer modernen High-Performance Community.
+        Erlebe spannende Abenteuer und Events mit unserer Crew. bestimmt sind ein paar von uns gerde auch auf achse oder hätten lust eine Tour zu fahren. Komm einfach auf unseren discord und frag nach!
       </p>
 
       <div class="hero-buttons">
@@ -445,19 +407,14 @@
 
   <div class="track-line"></div>
 
-  <!-- ABOUT -->
   <section id="about">
 
     <h2 class="section-title">
-      Built for <span>Speed</span>
+      Built for <span>Connection</span>
     </h2>
 
     <p class="section-text">
-      Unsere Plattform verbindet Motorrad-Enthusiasten mit echtem Rennsport-Feeling.
-      Inspiriert von der Nordschleife und professionellen Race Teams bietet RACELINE
-      eine exklusive Umgebung für Fahrer, Trackday-Fans und Performance-Liebhaber.
-    </p>
-
+      Du bist Fahranfänger oder machst gerade erst deinen Führerschein, dann bist du hier genau richtig. Wir sind der neue Motoradnachwuchs und du kannst ein teil von uns werden. Bei uns kannst du freunde in deiner nähe und auf deinem Fahrlevel kennenlernen.
     <div class="cards">
 
       <div class="card">
@@ -488,7 +445,6 @@
 
   </section>
 
-  <!-- STATS -->
   <section class="stats">
 
     <h2 class="section-title">
@@ -498,13 +454,14 @@
     <div class="stats-grid">
 
       <div class="stat-box">
-        <h2>0+</h2>
-        <p>Trackday Riders</p>
+        <p>We are</p>
+        <h2>1+</h2>
+        <p>Riders</p>
       </div>
 
       <div class="stat-box">
-        <h2>24</h2>
-        <p>Race Events</p>
+        <h2>0</h2>
+        <p>Events</p>
       </div>
 
       <div class="stat-box">
@@ -521,11 +478,10 @@
 
   </section>
 
-  <!-- GALLERY -->
   <section id="gallery">
 
     <h2 class="section-title">
-      Race <span>Gallery</span>
+      Tour <span>Gallery</span>
     </h2>
 
     <p class="section-text">
@@ -547,7 +503,21 @@
 
   </section>
 
-  <!-- CTA -->
+  <section id="events" class="events">
+    <h1 class="section-title">Events</h1>
+    <h1>Hier findest du kommende Aktionen und Veranstaltungen</h1>
+
+
+
+
+
+  </section>
+
+  <section id="community">
+    <h2 class="section-title">Unsere Community</h2>
+    <h2 class="section-text">Wir sind Fahrschüler und Fahranfänger mit dem Altersschwerpunkt 16-20</h2>
+  </section>
+  
   <section class="cta">
 
     <h2>
@@ -556,7 +526,7 @@
 
     <p>
       Schalte in den Race Mode und werde Teil der nächsten Generation
-      von Motorradfahrern auf Deutschlands legendärster Rennstrecke.
+      von Motorradfahrern auf Deutschlands straßen
     </p>
 
     <a href="#" class="btn btn-primary">
@@ -565,13 +535,12 @@
 
   </section>
 
-  <!-- FOOTER -->
   <footer>
 
     <div class="footer-content">
 
       <p>
-        © 2026 RACELINE Nürburgring Riders — All Rights Reserved
+        © 2026 First Gear Riders — All Rights Reserved
       </p>
 
       <div class="socials">
